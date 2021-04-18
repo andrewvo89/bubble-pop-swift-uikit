@@ -9,17 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var name:String = ""
+    var name:String = "" {
+        didSet {
+            StartGameButton.isEnabled = name.count > 0
+        }
+    }
 
     var gameDuration:Int = 60 {
-        didSet(value) {
-            GameDurationLabel.text = "Game Duration: \(String(value)) seconds"
+        didSet {
+            GameDurationLabel.text = "Game Duration: \(String(gameDuration)) seconds"
         }
     }
 
     var maxBubbles:Int = 15 {
-        didSet(value) {
-            MaxBubblesLabel.text = "Maximum Bubbles: \(String(value))"
+        didSet {
+            MaxBubblesLabel.text = "Maximum Bubbles: \(String(maxBubbles))"
         }
     }
 
@@ -32,6 +36,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var MaxBubblesLabel: UILabel!
     @IBOutlet weak var MaxBubblesSlider: UISlider!
     @IBOutlet weak var StartGameButton: UIButton!
+    
+    @IBAction func onNameTextFieldEditingChanged(_ sender: UITextField) {
+        name = NameTextField.text ?? ""
+    }
     
     @IBAction func onGameDurationSliderValueChanged(_ sender: UISlider) {
         gameDuration = Int(GameDurationSlider.value)
@@ -54,6 +62,7 @@ class ViewController: UIViewController {
         GameTitleLabel.text = "Bubble Pop!"
         
         //Name
+        name = ""
         NameLabel.text = "Your Name:"
         NameTextField.text = name
         
@@ -87,6 +96,17 @@ class ViewController: UIViewController {
         SettingsCard.layer.shadowRadius = 3
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toGameScreenSegue") {
+            let viewController = segue.destination as! GameScreenViewController
+            viewController.name = name
+            viewController.gameDuration = gameDuration
+            viewController.maxBubbles = maxBubbles
+            
+        }
+    }
+
 
 
 }
