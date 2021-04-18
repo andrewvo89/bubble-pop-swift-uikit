@@ -13,6 +13,7 @@
 		491D8730262A23EF00C92670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491D872E262A23EF00C92670 /* Main.storyboard */; };
 		491D8732262A23F000C92670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491D8731262A23F000C92670 /* Assets.xcassets */; };
 		491D8735262A23F000C92670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491D8733262A23F000C92670 /* LaunchScreen.storyboard */; };
+		491D8740262A245100C92670 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D873F262A245100C92670 /* colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		491D8731262A23F000C92670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		491D8734262A23F000C92670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		491D8736262A23F000C92670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		491D873F262A245100C92670 /* colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,32 @@
 		491D8727262A23EF00C92670 /* bubble-pop-swift-uikit */ = {
 			isa = PBXGroup;
 			children = (
+				491D8742262A259B00C92670 /* view-controllers */,
+				491D873E262A244000C92670 /* styles */,
 				491D8728262A23EF00C92670 /* AppDelegate.swift */,
 				491D872A262A23EF00C92670 /* SceneDelegate.swift */,
-				491D872C262A23EF00C92670 /* ViewController.swift */,
 				491D872E262A23EF00C92670 /* Main.storyboard */,
 				491D8731262A23F000C92670 /* Assets.xcassets */,
 				491D8733262A23F000C92670 /* LaunchScreen.storyboard */,
 				491D8736262A23F000C92670 /* Info.plist */,
 			);
 			path = "bubble-pop-swift-uikit";
+			sourceTree = "<group>";
+		};
+		491D873E262A244000C92670 /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				491D873F262A245100C92670 /* colors.swift */,
+			);
+			path = styles;
+			sourceTree = "<group>";
+		};
+		491D8742262A259B00C92670 /* view-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				491D872C262A23EF00C92670 /* ViewController.swift */,
+			);
+			path = "view-controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491D872D262A23EF00C92670 /* ViewController.swift in Sources */,
+				491D8740262A245100C92670 /* colors.swift in Sources */,
 				491D8729262A23EF00C92670 /* AppDelegate.swift in Sources */,
 				491D872B262A23EF00C92670 /* SceneDelegate.swift in Sources */,
 			);
