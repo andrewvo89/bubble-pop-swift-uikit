@@ -122,14 +122,88 @@
                     <view key="view" contentMode="scaleToFill" id="NMZ-I3-rDH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCk-JR-AyS">
+                                <rect key="frame" x="16" y="104" width="382" height="73"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZLI-E8-j9L">
+                                        <rect key="frame" x="16" y="16" width="350" height="41"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-9J-eAO">
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="41"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdi-PI-M9X">
+                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeCounterLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-fj-Mdw">
+                                                        <rect key="frame" x="0.0" y="20.5" width="175" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C7V-Qx-u6i">
+                                                <rect key="frame" x="175" y="0.0" width="175" height="41"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScoreTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8la-pl-l5n">
+                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScoreCounterLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-Ll-2oy">
+                                                        <rect key="frame" x="0.0" y="20.5" width="175" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ZLI-E8-j9L" secondAttribute="bottom" constant="16" id="gDm-N4-7eW"/>
+                                    <constraint firstItem="ZLI-E8-j9L" firstAttribute="top" secondItem="bCk-JR-AyS" secondAttribute="top" constant="16" id="qcg-qE-F1T"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZLI-E8-j9L" secondAttribute="trailing" constant="16" id="uT8-hr-lMB"/>
+                                    <constraint firstItem="ZLI-E8-j9L" firstAttribute="leading" secondItem="bCk-JR-AyS" secondAttribute="leading" constant="16" id="zwy-lf-bBH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0h-PO-8wz">
+                                <rect key="frame" x="16" y="200" width="378" height="662"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PET-A3-gjJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bCk-JR-AyS" firstAttribute="top" secondItem="PET-A3-gjJ" secondAttribute="top" constant="16" id="053-xP-bp3"/>
+                            <constraint firstItem="k0h-PO-8wz" firstAttribute="top" secondItem="bCk-JR-AyS" secondAttribute="bottom" constant="158" id="CbN-cx-crl"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="k0h-PO-8wz" secondAttribute="trailing" constant="112" id="Mvq-gA-xX5"/>
+                            <constraint firstItem="bCk-JR-AyS" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" constant="16" id="N7I-aS-zcL"/>
+                            <constraint firstItem="k0h-PO-8wz" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" constant="62" id="aTx-hY-SKw"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="bottom" secondItem="k0h-PO-8wz" secondAttribute="bottom" constant="399" id="mT9-ZA-reH"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="bCk-JR-AyS" secondAttribute="trailing" constant="16" id="vQ4-QN-ARI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6wm-yq-P4R"/>
+                    <connections>
+                        <outlet property="PlayAreaView" destination="k0h-PO-8wz" id="FO6-oV-nyp"/>
+                        <outlet property="ScoreCounterLabel" destination="Egm-Ll-2oy" id="oDu-Sg-xvg"/>
+                        <outlet property="ScoreTitleLabel" destination="8la-pl-l5n" id="pBo-QI-Hfq"/>
+                        <outlet property="TimeCounterLabel" destination="lLq-fj-Mdw" id="qHT-UM-YoA"/>
+                        <outlet property="TimeTitleLabel" destination="Cdi-PI-M9X" id="D2V-tr-9rI"/>
+                        <outlet property="TopPanelCard" destination="bCk-JR-AyS" id="naT-OQ-Can"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vug-Vu-xHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="449" y="76"/>
+            <point key="canvasLocation" x="447.82608695652175" y="75.669642857142847"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Osv-pH-mSO">
