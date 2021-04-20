@@ -183,17 +183,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bCk-JR-AyS" firstAttribute="top" secondItem="PET-A3-gjJ" secondAttribute="top" constant="16" id="053-xP-bp3"/>
-                            <constraint firstItem="k0h-PO-8wz" firstAttribute="top" secondItem="bCk-JR-AyS" secondAttribute="bottom" constant="158" id="CbN-cx-crl"/>
-                            <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="k0h-PO-8wz" secondAttribute="trailing" constant="112" id="Mvq-gA-xX5"/>
+                            <constraint firstItem="k0h-PO-8wz" firstAttribute="top" secondItem="bCk-JR-AyS" secondAttribute="bottom" id="CbN-cx-crl"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="k0h-PO-8wz" secondAttribute="trailing" id="Mvq-gA-xX5"/>
                             <constraint firstItem="bCk-JR-AyS" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" constant="16" id="N7I-aS-zcL"/>
-                            <constraint firstItem="k0h-PO-8wz" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" constant="62" id="aTx-hY-SKw"/>
-                            <constraint firstItem="PET-A3-gjJ" firstAttribute="bottom" secondItem="k0h-PO-8wz" secondAttribute="bottom" constant="399" id="mT9-ZA-reH"/>
+                            <constraint firstItem="k0h-PO-8wz" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" id="aTx-hY-SKw"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="bottom" secondItem="k0h-PO-8wz" secondAttribute="bottom" id="mT9-ZA-reH"/>
                             <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="bCk-JR-AyS" secondAttribute="trailing" constant="16" id="vQ4-QN-ARI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6wm-yq-P4R"/>
                     <connections>
-                        <outlet property="PlayAreaView" destination="k0h-PO-8wz" id="FO6-oV-nyp"/>
+                        <outlet property="PlayAreaView" destination="k0h-PO-8wz" id="id5-Yp-JGw"/>
                         <outlet property="ScoreCounterLabel" destination="Egm-Ll-2oy" id="oDu-Sg-xvg"/>
                         <outlet property="ScoreTitleLabel" destination="8la-pl-l5n" id="pBo-QI-Hfq"/>
                         <outlet property="TimeCounterLabel" destination="lLq-fj-Mdw" id="qHT-UM-YoA"/>

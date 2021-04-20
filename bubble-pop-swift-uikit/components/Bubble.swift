@@ -8,14 +8,17 @@
 import UIKit
 
 class Bubble: UIButton {
-    let x = Int.random(in: 20...400)
-    let y = Int.random(in: 20...800)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(bubbleSize: Int, availablePositions: [(x: Int, y: Int)]) {
+        super.init(frame: .zero)
+        //Use any randome x,y co-ordinates from availablePositions
+        let randomIndex = Int.random(in: 0...availablePositions.count - 1)
+        //Get x,y tuple from array
+        let newPosition: (x: Int, y: Int) = availablePositions[randomIndex]
+        //Set the bubble's unique position
+        self.frame = CGRect(x: newPosition.x, y: newPosition.y, width: bubbleSize, height: bubbleSize)
+        //Styling of the bubble
         self.backgroundColor = .blue
-        self.frame = CGRect(x: x, y: y, width: 50, height: 50)
-        self.layer.cornerRadius = 0.5 * self.bounds.size.width
+        self.layer.cornerRadius = self.bounds.size.width / 2
     }
     
     required init?(coder: NSCoder) {
