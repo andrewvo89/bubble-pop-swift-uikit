@@ -30,6 +30,16 @@ class GameScreenViewController: UIViewController {
             if (TimeCounterLabel != nil) {
                 TimeCounterLabel.text = String(timeRemaining)
             }
+            if (timeRemaining == 0) {
+                timer.invalidate()
+                timeRemaining = gameDuration
+                let userDefaults = UserDefaults.standard
+                
+                let currentHighScore: Int = userDefaults.object(forKey: name) as? Int ?? 0
+                if (score > currentHighScore) {
+                    userDefaults.setValue(score, forKey: name)
+                }
+            }
         }
     }
     var gameDuration:Int = 60 {
@@ -52,7 +62,7 @@ class GameScreenViewController: UIViewController {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
-            self.countingDown()
+            self.subtractSecondsFromTimer(seconds: 1)
 //            self.removeBubbles()
             self.createBubbles()
         }
@@ -96,13 +106,8 @@ class GameScreenViewController: UIViewController {
         availablePositions = allPositions
     }
     
-    @objc func countingDown() {
-        timeRemaining -= 1
-        
-        if (timeRemaining == 0) {
-            timer.invalidate()
-            timeRemaining = gameDuration
-        }
+    @objc func subtractSecondsFromTimer(seconds: Int) {
+        timeRemaining -= seconds
     }
     
     func createBubbles() -> Void {

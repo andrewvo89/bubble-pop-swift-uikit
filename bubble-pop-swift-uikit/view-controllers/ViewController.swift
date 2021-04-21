@@ -59,7 +59,8 @@ class ViewController: UIViewController {
     func initialize() -> Void {
         let userDefaults = UserDefaults.standard
 //        userDefaults.set(["hello"], forKey: "123")
-        let highScores = userDefaults.object(forKey: "123") as? [String] ?? [String]()
+        userDefaults.removeObject(forKey: "123")
+        let highScores = userDefaults.object(forKey: "123")
         print(highScores)
         
         
@@ -74,7 +75,7 @@ class ViewController: UIViewController {
         
         //Game Duration
         gameDuration = 60
-        GameDurationSlider.minimumValue = 15
+        GameDurationSlider.minimumValue = 5
         GameDurationSlider.maximumValue = 120
         GameDurationSlider.value = Float(gameDuration)
         
