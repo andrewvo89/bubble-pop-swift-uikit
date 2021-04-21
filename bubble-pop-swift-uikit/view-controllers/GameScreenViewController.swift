@@ -38,6 +38,11 @@ class GameScreenViewController: UIViewController {
         }
     }
     var maxBubbles:Int = 15
+    var score:Int = 0 {
+        didSet {
+            ScoreCounterLabel.text = String(score)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +76,6 @@ class GameScreenViewController: UIViewController {
         //Score labels
         ScoreTitleLabel.text = "Score"
         ScoreTitleLabel.textAlignment = .center
-        ScoreCounterLabel.text = "0"
         ScoreCounterLabel.textAlignment = .center
         
         //Initialize all positions depending on screen width and height
@@ -135,7 +139,13 @@ class GameScreenViewController: UIViewController {
 
     }
     
-    @IBAction func onBubblePressed(_ sender: UIButton) {
+    @IBAction func onBubblePressed(_ sender: Bubble) {
+        addPointsToScore(points: sender.points)
         sender.removeFromSuperview()
+    }
+    
+    func addPointsToScore(points: Int) -> Void {
+        print(points)
+        score += points
     }
 }

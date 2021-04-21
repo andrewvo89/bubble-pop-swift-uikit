@@ -123,6 +123,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0h-PO-8wz">
+                                <rect key="frame" x="0.0" y="177" width="414" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCk-JR-AyS">
                                 <rect key="frame" x="16" y="104" width="382" height="73"/>
                                 <subviews>
@@ -174,20 +178,16 @@
                                     <constraint firstItem="ZLI-E8-j9L" firstAttribute="leading" secondItem="bCk-JR-AyS" secondAttribute="leading" constant="16" id="zwy-lf-bBH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0h-PO-8wz">
-                                <rect key="frame" x="16" y="200" width="378" height="662"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PET-A3-gjJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bCk-JR-AyS" firstAttribute="top" secondItem="PET-A3-gjJ" secondAttribute="top" constant="16" id="053-xP-bp3"/>
-                            <constraint firstItem="k0h-PO-8wz" firstAttribute="top" secondItem="bCk-JR-AyS" secondAttribute="bottom" id="CbN-cx-crl"/>
-                            <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="k0h-PO-8wz" secondAttribute="trailing" id="Mvq-gA-xX5"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="k0h-PO-8wz" secondAttribute="trailing" id="HC8-qf-DV2"/>
                             <constraint firstItem="bCk-JR-AyS" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" constant="16" id="N7I-aS-zcL"/>
-                            <constraint firstItem="k0h-PO-8wz" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" id="aTx-hY-SKw"/>
-                            <constraint firstItem="PET-A3-gjJ" firstAttribute="bottom" secondItem="k0h-PO-8wz" secondAttribute="bottom" id="mT9-ZA-reH"/>
+                            <constraint firstItem="PET-A3-gjJ" firstAttribute="bottom" secondItem="k0h-PO-8wz" secondAttribute="bottom" id="aS9-Ql-AZO"/>
+                            <constraint firstItem="k0h-PO-8wz" firstAttribute="leading" secondItem="PET-A3-gjJ" secondAttribute="leading" id="aoG-CS-VZ9"/>
+                            <constraint firstItem="k0h-PO-8wz" firstAttribute="top" secondItem="bCk-JR-AyS" secondAttribute="bottom" id="fEa-HI-Ygn"/>
                             <constraint firstItem="PET-A3-gjJ" firstAttribute="trailing" secondItem="bCk-JR-AyS" secondAttribute="trailing" constant="16" id="vQ4-QN-ARI"/>
                         </constraints>
                     </view>

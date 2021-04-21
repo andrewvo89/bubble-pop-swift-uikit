@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     var name:String = "" {
         didSet {
-            StartGameButton.isEnabled = name.count > 0
+//            StartGameButton.isEnabled = name.count > 0
         }
     }
 
