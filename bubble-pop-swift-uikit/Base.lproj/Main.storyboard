@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-0y-gfD">
-                                <rect key="frame" x="16" y="320" width="382" height="310"/>
+                                <rect key="frame" x="16" y="298" width="382" height="310"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameTitleLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-85-Zfn">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -124,11 +124,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0h-PO-8wz">
-                                <rect key="frame" x="0.0" y="177" width="414" height="685"/>
+                                <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCk-JR-AyS">
-                                <rect key="frame" x="16" y="104" width="382" height="73"/>
+                                <rect key="frame" x="16" y="60" width="382" height="73"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZLI-E8-j9L">
                                         <rect key="frame" x="16" y="16" width="350" height="41"/>
@@ -192,6 +192,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6wm-yq-P4R"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="PlayAreaView" destination="k0h-PO-8wz" id="id5-Yp-JGw"/>
                         <outlet property="ScoreCounterLabel" destination="Egm-Ll-2oy" id="oDu-Sg-xvg"/>
@@ -237,16 +238,18 @@
         <!--Navigation Controller-->
         <scene sceneID="LRA-oz-nco">
             <objects>
-                <navigationController id="zrs-Dk-qMw" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4I-hJ-itC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="zrs-Dk-qMw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gru-Ct-RK3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iNh-wN-Jnv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XFi-i6-ACE"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i4I-hJ-itC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1064" y="76"/>
         </scene>

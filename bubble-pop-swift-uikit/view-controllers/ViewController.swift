@@ -57,6 +57,12 @@ class ViewController: UIViewController {
     }
     
     func initialize() -> Void {
+        let userDefaults = UserDefaults.standard
+//        userDefaults.set(["hello"], forKey: "123")
+        let highScores = userDefaults.object(forKey: "123") as? [String] ?? [String]()
+        print(highScores)
+        
+        
         //Game Label
         GameTitleLabel.font = UIFont.systemFont(ofSize: 24)
         GameTitleLabel.text = "Bubble Pop!"

@@ -9,11 +9,12 @@ import UIKit
 
 class Bubble: UIButton {
     var points: Int = 0
+    var color: UIColor = UIColor.red
         
     init(bubbleSize: Int, availablePositions: [(x: Int, y: Int)]) {
         super.init(frame: .zero)
         //Use any randome x,y co-ordinates from availablePositions
-        let randomIndex = Int.random(in: 0...availablePositions.count - 1)
+        let randomIndex = Int.random(in: 0..<availablePositions.count)
         //Get x,y tuple from array
         let newPosition: (x: Int, y: Int) = availablePositions[randomIndex]
         //Set the bubble's unique position
@@ -23,6 +24,7 @@ class Bubble: UIButton {
         let buttonProperties: (color: UIColor, points: Int) = getBubbleProperties()
         
         points = buttonProperties.points
+        color = buttonProperties.color
         //Styling of the bubble
         self.backgroundColor = buttonProperties.color
         self.layer.cornerRadius = self.bounds.size.width / 2
