@@ -20,8 +20,8 @@ class GameScreenViewController: UIViewController {
     var timer = Timer()
     var name:String = ""
     var activeBubbles: [Bubble] = []
-    var allPositions: [(x: Int, y: Int)] = []
-    var availablePositions: [(x: Int, y: Int)] = []
+    var availableWidth: Int = 0
+    var availableHeight: Int = 0
     var prevColor: UIColor?
     
     var timeRemaining:Int = 60 {
@@ -58,22 +58,21 @@ class GameScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
+        initializeUI()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
-            self.subtractSecondsFromTimer(seconds: 1)
-//            self.removeBubbles()
-            self.createBubbles()
+            self.timeRemaining -= 1
+            self.sync(lock: self.activeBubbles) {
+                self.removeBubbles()
+                self.createBubbles()
+            }
+            
         }
         // Do any additional setup after loading the view.
     }
     
-    func initialize() -> Void {
-        
-        
-        
-        
+    func initializeUI() -> Void {
         //Set card styles for game options card
         TopPanelCard.layer.borderWidth = 1
         TopPanelCard.layer.borderColor = UIColor.black.cgColor
@@ -96,84 +95,62 @@ class GameScreenViewController: UIViewController {
         score = 0
         
         //Initialize all positions depending on screen width and height
-        let availableWidth = Int(PlayAreaView.frame.width) - DEFAULT_SIZE
-        let availableHeight = Int(PlayAreaView.frame.height) - DEFAULT_SIZE
-        for x in 0...availableWidth {
-            for y in 0...availableHeight {
-                allPositions.append((x, y))
-            }
+        availableWidth = Int(PlayAreaView.frame.width) - DEFAULT_SIZE
+        availableHeight = Int(PlayAreaView.frame.height) - DEFAULT_SIZE
+    }
+    
+    
+    func createBubbles() {
+        //Can only create maximum between what's currently on the screen and the max bubbles
+        let maxAddCount = maxBubbles - activeBubbles.count
+        let createCount = Int.random(in: 0...maxAddCount)
+        //Possible to create no bubbles on this play, return early from function
+        if (createCount == 0) {
+            return
         }
-        availablePositions = allPositions
+        //Loop through and create bubbles
+        for _ in 1...createCount {
+            //Default initial vales before entering repeat while loop
+            var isOverlapping: Bool
+            let newBubble = Bubble(x: 0, y: 0, bubbleSize: DEFAULT_SIZE)
+            repeat {
+                //Generate random co-ordinates
+                let newX = Int.random(in: 0...availableWidth)
+                let newY = Int.random(in: 0...availableHeight)
+                //Move the bubble to new position
+                newBubble.changePosition(x: newX, y: newY)
+                //If at least one active bubble is overlapping, then iterate through this while loop again
+                isOverlapping = activeBubbles.contains(where: { (currentBubble) -> Bool in
+                    newBubble.isOverlapping(bubble: currentBubble)
+                })
+            } while (isOverlapping == true)
+            //Success condition, exit loop and add bubble to the game
+            activeBubbles.append(newBubble)
+            newBubble.addTarget(self, action: #selector(onBubblePressed), for: .touchUpInside)
+            PlayAreaView.addSubview(newBubble)
+        }
     }
     
-    @objc func subtractSecondsFromTimer(seconds: Int) {
-        timeRemaining -= seconds
-    }
-    
-    func createBubbles() -> Void {
-        //Reset positions array to make everything available
-        availablePositions = allPositions
+    func removeBubbles() -> Void {
+        //New array of bubbles to keep
         var newActiveBubbles: [Bubble] = []
-        for bubble in activeBubbles {
+        for activeBubble in activeBubbles {
             let removeBubble = Bool.random()
             if (removeBubble) {
-                bubble.removeFromSuperview()
+                //Remove from parent view
+                activeBubble.removeFromSuperview()
             } else {
-                availablePositions = getNewAvailablePositions(bubble: bubble)
-                newActiveBubbles.append(bubble)
-                bubble.addTarget(self, action: #selector(onBubblePressed), for: .touchUpInside)
+                //Add to new list of bubbles
+                newActiveBubbles.append(activeBubble)
             }
         }
-        
-        
-        
-        //Generate a random amount base off maxBubbbles minus newActiveBubbles count
-        let newMaxBubbles = maxBubbles - newActiveBubbles.count
-        //If there are no new bubbles, don't bother trying to generate a random amount of new bubbles
-        if (newMaxBubbles > 0) {
-            let numberOfNewBubbles = Int.random(in: 1...newMaxBubbles)
-            for _ in 0..<numberOfNewBubbles {
-                //Create new bubble, send through bubbleSize and current list of available co-ordinates
-                let bubble  = Bubble(bubbleSize: DEFAULT_SIZE, availablePositions: availablePositions)
-                
-                //Get bubbles, x,y, width and height generated from init()
-                availablePositions = getNewAvailablePositions(bubble: bubble)
-                
-                //Add listener for bubble to be touched
-                bubble.addTarget(self, action: #selector(onBubblePressed), for: .touchUpInside)
-                
-                //Add to PlayArea UiView
-                PlayAreaView.addSubview(bubble)
-                
-                //Add to activeBubbles array so that it can be removed from the SuperView after 1 second
-                newActiveBubbles.append(bubble)
-            }
-        }
+        //Points activeBubbles to newActiveBubbles array
         activeBubbles = newActiveBubbles
-
-    }
-    
-    func getNewAvailablePositions(bubble: Bubble) -> [(x: Int, y: Int)] {
-        //Get bubbles, x,y, width and height generated from init()
-        let bubbleHeight = Int(bubble.frame.height)
-        let bubbleWidth = Int(bubble.frame.width)
-        let bubbleXPosition = Int(bubble.frame.origin.x)
-        let bubbleYPosition = Int(bubble.frame.origin.y)
-        //Remove all co-ordinates occupied by this bubble from availablePositions array
-        let newAvailablePositions: [(x: Int, y: Int)] = availablePositions.filter { (currentPosition) -> Bool in
-            !(currentPosition.x >= (bubbleXPosition - bubbleWidth) && currentPosition.x <= (bubbleXPosition + bubbleWidth) && currentPosition.y >= (bubbleYPosition - bubbleHeight) && currentPosition.y <= (bubbleYPosition + bubbleHeight))
-        }
-        return newAvailablePositions
-    }
-    
-    @IBAction func onBubblePressed(_ sender: Bubble) {
-        addPointsToScore(color: sender.color, points: sender.points)
-        removeBubble(bubble: sender)
     }
     
     func addPointsToScore(color: UIColor, points: Int) -> Void {
         if (prevColor != nil && prevColor === color) {
-            print("x1: \(points) x1.5: \(Int(ceil(Double(points) * 1.5)))")
+//            print("x1: \(points) x1.5: \(Int(ceil(Double(points) * 1.5)))")
             score += Int(ceil(Double(points) * 1.5))
         } else {
             score += points
@@ -181,17 +158,22 @@ class GameScreenViewController: UIViewController {
         prevColor = color
     }
     
-    func removeBubble(bubble: Bubble) -> Void {
-        let removeX = Int(bubble.frame.origin.x)
-        let removeY = Int(bubble.frame.origin.y)
-        let newActiveBubbles: [Bubble] = activeBubbles.filter { (currentBubble) -> Bool in
-            let currentX = Int(currentBubble.frame.origin.x)
-            let currentY = Int(currentBubble.frame.origin.y)
-            return removeX != currentX && removeY != currentY
+    @IBAction func onBubblePressed(_ sender: Bubble) {
+        sync(lock: activeBubbles) {
+            addPointsToScore(color: sender.color, points: sender.points)
+            sender.removeFromSuperview()
+            let newActiveBubbles: [Bubble] = activeBubbles.filter { (activeBubble) -> Bool in
+                activeBubble.frame.origin.x != sender.frame.origin.x && activeBubble.frame.origin.y != sender.frame.origin.y
+            }
+            activeBubbles = newActiveBubbles
         }
-        bubble.removeFromSuperview()
-        print("before activeBubbles \(activeBubbles.count)")
-        activeBubbles = newActiveBubbles
-        print("after activeBubbles \(activeBubbles.count)")
+    }
+    
+    func sync(lock: Any, action: () -> ()) {
+        objc_sync_enter(lock)
+        defer {
+            objc_sync_exit(lock)
+        }
+        action()
     }
 }

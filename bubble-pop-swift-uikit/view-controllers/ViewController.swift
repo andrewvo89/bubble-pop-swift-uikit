@@ -61,7 +61,6 @@ class ViewController: UIViewController {
 //        userDefaults.set(["hello"], forKey: "123")
         userDefaults.removeObject(forKey: "123")
         let highScores = userDefaults.object(forKey: "123")
-        print(highScores)
         
         
         //Game Label

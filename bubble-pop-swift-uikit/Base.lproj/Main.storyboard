@@ -200,6 +200,7 @@
                         <outlet property="TimeCounterLabel" destination="lLq-fj-Mdw" id="qHT-UM-YoA"/>
                         <outlet property="TimeTitleLabel" destination="Cdi-PI-M9X" id="D2V-tr-9rI"/>
                         <outlet property="TopPanelCard" destination="bCk-JR-AyS" id="naT-OQ-Can"/>
+                        <segue destination="7VX-Ps-s8E" kind="show" identifier="toGameEnd" id="eEw-n5-Ys2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vug-Vu-xHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,6 +217,7 @@
                         <viewLayoutGuide key="safeArea" id="vPK-B6-zyt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Pg7-jz-0pG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbt-lz-Q9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

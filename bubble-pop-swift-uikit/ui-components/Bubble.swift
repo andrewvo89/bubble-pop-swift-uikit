@@ -10,21 +10,16 @@ import UIKit
 class Bubble: UIButton {
     var points: Int = 0
     var color: UIColor = UIColor.red
-        
-    init(bubbleSize: Int, availablePositions: [(x: Int, y: Int)]) {
+    
+    init(x: Int, y: Int, bubbleSize: Int) {
         super.init(frame: .zero)
-        //Use any randome x,y co-ordinates from availablePositions
-        let randomIndex = Int.random(in: 0..<availablePositions.count)
-        //Get x,y tuple from array
-        let newPosition: (x: Int, y: Int) = availablePositions[randomIndex]
-        //Set the bubble's unique position
-        self.frame = CGRect(x: newPosition.x, y: newPosition.y, width: bubbleSize, height: bubbleSize)
+        self.frame = CGRect(x: x, y: y, width: bubbleSize, height: bubbleSize)
         
         //Get random generated bubble properties
         let buttonProperties: (color: UIColor, points: Int) = getBubbleProperties()
-        
         points = buttonProperties.points
         color = buttonProperties.color
+        
         //Styling of the bubble
         self.backgroundColor = buttonProperties.color
         self.layer.cornerRadius = self.bounds.size.width / 2
@@ -32,6 +27,25 @@ class Bubble: UIButton {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func changePosition(x: Int, y: Int) -> Void {
+        self.frame.origin.x = CGFloat(x)
+        self.frame.origin.y = CGFloat(y)
+    }
+    
+    func isOverlapping(bubble: Bubble) -> Bool {
+        let selfX = Int(self.frame.origin.x)
+        let selfY = Int(self.frame.origin.y)
+        
+        let bubbleHeight = Int(bubble.frame.height)
+        let bubbleWidth = Int(bubble.frame.width)
+        let bubbleX = Int(bubble.frame.origin.x)
+        let bubbleY = Int(bubble.frame.origin.y)
+        
+        let overlappingX = selfX >= (bubbleX - bubbleWidth) && selfX <= (bubbleX + bubbleWidth)
+        let overlappingY = selfY >= (bubbleY - bubbleHeight) && selfY <= (bubbleY + bubbleHeight)
+        return overlappingX && overlappingY
     }
     
     func getBubbleProperties() -> (UIColor, Int) {
