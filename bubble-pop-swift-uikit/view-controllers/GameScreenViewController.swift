@@ -31,14 +31,7 @@ class GameScreenViewController: UIViewController {
                 TimeCounterLabel.text = String(timeRemaining)
             }
             if (timeRemaining == 0) {
-                timer.invalidate()
-                timeRemaining = gameDuration
-                let userDefaults = UserDefaults.standard
-                
-                let currentHighScore: Int = userDefaults.object(forKey: name) as? Int ?? 0
-                if (score > currentHighScore) {
-                    userDefaults.setValue(score, forKey: name)
-                }
+                onGameEnd()
             }
         }
     }
@@ -97,6 +90,14 @@ class GameScreenViewController: UIViewController {
         //Initialize all positions depending on screen width and height
         availableWidth = Int(PlayAreaView.frame.width) - DEFAULT_SIZE
         availableHeight = Int(PlayAreaView.frame.height) - DEFAULT_SIZE
+    }
+    
+    func sync(lock: Any, action: () -> ()) {
+        objc_sync_enter(lock)
+        defer {
+            objc_sync_exit(lock)
+        }
+        action()
     }
     
     
@@ -169,11 +170,21 @@ class GameScreenViewController: UIViewController {
         }
     }
     
-    func sync(lock: Any, action: () -> ()) {
-        objc_sync_enter(lock)
-        defer {
-            objc_sync_exit(lock)
+    func onGameEnd() -> Void {
+        timer.invalidate()
+        timeRemaining = gameDuration
+        let finalScore = Score(name: name, score: score)
+        finalScore.register()
+        let highScores = Score.getAll()
+        print("High Scores\(highScores)")
+        
+        //Programatically navigate to high score screen
+        performSegue(withIdentifier: "toHighScoreScreenSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toHighScoreScreenSegue") {
+            
         }
-        action()
     }
 }

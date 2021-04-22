@@ -1,26 +1,16 @@
 //
-//  File.swift
+//  HighScores.swift
 //  bubble-pop-swift-uikit
 //
-//  Created by Andrew Vo-Nguyen on 22/4/21.
+//  Created by Andrew Vo-Nguyen on 23/4/21.
 //
+
 import UIKit
 
-class Score {
-    var name: String
-    var score: Int
-    let userDefaults = UserDefaults.standard
-    
-    init(name: String, score: Int) {
-        self.name = name
-        self.score = score
-    }
-    
-    
+struct HighScores {
     static func getAll() -> [Score] {
         let userDefaults = UserDefaults.standard
         let scoresDictionary = userDefaults.object(forKey: "highScores") as? Dictionary<String, Int> ?? Dictionary<String, Int>()
-        print(scoresDictionary)
         var scores: [Score] = []
         for (key, value) in scoresDictionary {
             scores.append(Score(name: key, score: value))
@@ -31,13 +21,15 @@ class Score {
         return scoreSorted
     }
     
-    func register() -> Void {
+    func register(score: Score) -> Void {
+        let userDefaults = UserDefaults.standard
         var scoresDictionary = userDefaults.object(forKey: "highScores") as? Dictionary<String, Int> ?? Dictionary<String, Int>()
-        let currentHighScore: Int = scoresDictionary[name] ?? 0
+        let currentHighScore: Int = scoresDictionary[score.name] ?? 0
         
-        if (score > currentHighScore) {
-            scoresDictionary[name] = score
+        if (score.score > currentHighScore) {
+            scoresDictionary[score.name] = score.score
             userDefaults.setValue(scoresDictionary, forKey: "highScores")
         }
     }
+    
 }

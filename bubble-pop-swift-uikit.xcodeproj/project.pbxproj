@@ -16,6 +16,8 @@
 		491D874A262C16AC00C92670 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D8749262C16AC00C92670 /* GameScreenViewController.swift */; };
 		491D8752262E5C6000C92670 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D8751262E5C6000C92670 /* Bubble.swift */; };
 		491D877C2630D9A600C92670 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D877B2630D9A600C92670 /* Score.swift */; };
+		491D878026320F3800C92670 /* HighScoreScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */; };
+		491D878426322F2900C92670 /* HighScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D878326322F2900C92670 /* HighScores.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		491D8749262C16AC00C92670 /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
 		491D8751262E5C6000C92670 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		491D877B2630D9A600C92670 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreScreenViewController.swift; sourceTree = "<group>"; };
+		491D878326322F2900C92670 /* HighScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScores.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 			children = (
 				491D872C262A23EF00C92670 /* ViewController.swift */,
 				491D8749262C16AC00C92670 /* GameScreenViewController.swift */,
+				491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */,
 			);
 			path = "view-controllers";
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				491D877B2630D9A600C92670 /* Score.swift */,
+				491D878326322F2900C92670 /* HighScores.swift */,
 			);
 			path = stucts;
 			sourceTree = "<group>";
@@ -172,7 +178,9 @@
 			files = (
 				491D874A262C16AC00C92670 /* GameScreenViewController.swift in Sources */,
 				491D877C2630D9A600C92670 /* Score.swift in Sources */,
+				491D878426322F2900C92670 /* HighScores.swift in Sources */,
 				491D8752262E5C6000C92670 /* Bubble.swift in Sources */,
+				491D878026320F3800C92670 /* HighScoreScreenViewController.swift in Sources */,
 				491D872D262A23EF00C92670 /* ViewController.swift in Sources */,
 				491D8729262A23EF00C92670 /* AppDelegate.swift in Sources */,
 				491D872B262A23EF00C92670 /* SceneDelegate.swift in Sources */,

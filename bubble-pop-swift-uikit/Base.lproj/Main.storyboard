@@ -200,24 +200,39 @@
                         <outlet property="TimeCounterLabel" destination="lLq-fj-Mdw" id="qHT-UM-YoA"/>
                         <outlet property="TimeTitleLabel" destination="Cdi-PI-M9X" id="D2V-tr-9rI"/>
                         <outlet property="TopPanelCard" destination="bCk-JR-AyS" id="naT-OQ-Can"/>
-                        <segue destination="7VX-Ps-s8E" kind="show" identifier="toGameEnd" id="eEw-n5-Ys2"/>
+                        <segue destination="7VX-Ps-s8E" kind="show" identifier="toHighScoreScreenSegue" id="eEw-n5-Ys2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vug-Vu-xHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="447.82608695652175" y="75.669642857142847"/>
         </scene>
-        <!--View Controller-->
+        <!--High Score Screen View Controller-->
         <scene sceneID="tTh-hp-YeT">
             <objects>
-                <viewController id="7VX-Ps-s8E" sceneMemberID="viewController">
+                <viewController id="7VX-Ps-s8E" customClass="HighScoreScreenViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tzt-J5-mc7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8Q-QG-Nv2">
+                                <rect key="frame" x="16" y="60" width="382" height="786"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vPK-B6-zyt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="q8Q-QG-Nv2" firstAttribute="leading" secondItem="vPK-B6-zyt" secondAttribute="leading" constant="16" id="Vac-DK-msd"/>
+                            <constraint firstItem="q8Q-QG-Nv2" firstAttribute="top" secondItem="vPK-B6-zyt" secondAttribute="top" constant="16" id="nfK-Yi-H0M"/>
+                            <constraint firstItem="vPK-B6-zyt" firstAttribute="trailing" secondItem="q8Q-QG-Nv2" secondAttribute="trailing" constant="16" id="noA-uv-cTd"/>
+                            <constraint firstItem="vPK-B6-zyt" firstAttribute="bottom" secondItem="q8Q-QG-Nv2" secondAttribute="bottom" constant="16" id="wL6-kQ-0Q8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pg7-jz-0pG"/>
+                    <connections>
+                        <outlet property="MainCard" destination="q8Q-QG-Nv2" id="T6s-P8-HBU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbt-lz-Q9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -57,11 +57,11 @@ class ViewController: UIViewController {
     }
     
     func initialize() -> Void {
-        let userDefaults = UserDefaults.standard
-//        userDefaults.set(["hello"], forKey: "123")
-        userDefaults.removeObject(forKey: "123")
-        let highScores = userDefaults.object(forKey: "123")
-        
+        let highScores = Score.getAll()
+        for highScore in highScores {
+            print("\(highScore.name): \(highScore.score)")
+        }
+            
         
         //Game Label
         GameTitleLabel.font = UIFont.systemFont(ofSize: 24)
