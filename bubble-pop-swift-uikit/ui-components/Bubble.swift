@@ -35,17 +35,7 @@ class Bubble: UIButton {
     }
     
     func isOverlapping(bubble: Bubble) -> Bool {
-        let selfX = Int(self.frame.origin.x)
-        let selfY = Int(self.frame.origin.y)
-        
-        let bubbleHeight = Int(bubble.frame.height)
-        let bubbleWidth = Int(bubble.frame.width)
-        let bubbleX = Int(bubble.frame.origin.x)
-        let bubbleY = Int(bubble.frame.origin.y)
-        
-        let overlappingX = selfX >= (bubbleX - bubbleWidth) && selfX <= (bubbleX + bubbleWidth)
-        let overlappingY = selfY >= (bubbleY - bubbleHeight) && selfY <= (bubbleY + bubbleHeight)
-        return overlappingX && overlappingY
+        return self.frame.intersects(bubble.frame)
     }
     
     func getBubbleProperties() -> (UIColor, Int) {

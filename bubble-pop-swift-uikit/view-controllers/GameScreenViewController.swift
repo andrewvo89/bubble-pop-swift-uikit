@@ -56,11 +56,8 @@ class GameScreenViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.timeRemaining -= 1
-            self.sync(lock: self.activeBubbles) {
-                self.removeBubbles()
-                self.createBubbles()
-            }
-            
+            self.removeBubbles()
+            self.createBubbles()
         }
         // Do any additional setup after loading the view.
     }
@@ -92,12 +89,12 @@ class GameScreenViewController: UIViewController {
         availableHeight = Int(PlayAreaView.frame.height) - DEFAULT_SIZE
     }
     
-    func sync(lock: Any, action: () -> ()) {
-        objc_sync_enter(lock)
-        defer {
-            objc_sync_exit(lock)
-        }
-        action()
+    func sync<T>(lock: NSLock, action: () -> T) -> T {
+//        lock.lock()
+//        defer {
+//            lock.unlock()
+//        }
+        return action()
     }
     
     
@@ -160,14 +157,12 @@ class GameScreenViewController: UIViewController {
     }
     
     @IBAction func onBubblePressed(_ sender: Bubble) {
-        sync(lock: activeBubbles) {
-            addPointsToScore(color: sender.color, points: sender.points)
-            sender.removeFromSuperview()
+        addPointsToScore(color: sender.color, points: sender.points)
+        sender.removeFromSuperview()
             let newActiveBubbles: [Bubble] = activeBubbles.filter { (activeBubble) -> Bool in
-                activeBubble.frame.origin.x != sender.frame.origin.x && activeBubble.frame.origin.y != sender.frame.origin.y
+                activeBubble != sender
             }
             activeBubbles = newActiveBubbles
-        }
     }
     
     func onGameEnd() -> Void {
@@ -175,9 +170,6 @@ class GameScreenViewController: UIViewController {
         timeRemaining = gameDuration
         let finalScore = Score(name: name, score: score)
         finalScore.register()
-        let highScores = Score.getAll()
-        print("High Scores\(highScores)")
-        
         //Programatically navigate to high score screen
         performSegue(withIdentifier: "toHighScoreScreenSegue", sender: nil)
     }

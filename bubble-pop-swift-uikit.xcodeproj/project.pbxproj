@@ -18,6 +18,8 @@
 		491D877C2630D9A600C92670 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D877B2630D9A600C92670 /* Score.swift */; };
 		491D878026320F3800C92670 /* HighScoreScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */; };
 		491D878426322F2900C92670 /* HighScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D878326322F2900C92670 /* HighScores.swift */; };
+		491D87902633A68800C92670 /* HighScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D878E2633A68800C92670 /* HighScoreTableViewCell.swift */; };
+		491D87912633A68800C92670 /* HighScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491D878F2633A68800C92670 /* HighScoreTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		491D877B2630D9A600C92670 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreScreenViewController.swift; sourceTree = "<group>"; };
 		491D878326322F2900C92670 /* HighScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScores.swift; sourceTree = "<group>"; };
+		491D878E2633A68800C92670 /* HighScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreTableViewCell.swift; sourceTree = "<group>"; };
+		491D878F2633A68800C92670 /* HighScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighScoreTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				491D8751262E5C6000C92670 /* Bubble.swift */,
+				491D878E2633A68800C92670 /* HighScoreTableViewCell.swift */,
+				491D878F2633A68800C92670 /* HighScoreTableViewCell.xib */,
 			);
 			path = "ui-components";
 			sourceTree = "<group>";
@@ -165,6 +171,7 @@
 			files = (
 				491D8735262A23F000C92670 /* LaunchScreen.storyboard in Resources */,
 				491D8732262A23F000C92670 /* Assets.xcassets in Resources */,
+				491D87912633A68800C92670 /* HighScoreTableViewCell.xib in Resources */,
 				491D8730262A23EF00C92670 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +191,7 @@
 				491D872D262A23EF00C92670 /* ViewController.swift in Sources */,
 				491D8729262A23EF00C92670 /* AppDelegate.swift in Sources */,
 				491D872B262A23EF00C92670 /* SceneDelegate.swift in Sources */,
+				491D87902633A68800C92670 /* HighScoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

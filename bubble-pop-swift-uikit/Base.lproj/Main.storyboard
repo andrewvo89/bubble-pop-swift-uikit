@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-0y-gfD">
-                                <rect key="frame" x="16" y="298" width="382" height="310"/>
+                                <rect key="frame" x="16" y="249" width="382" height="310"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameTitleLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-85-Zfn">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -120,15 +120,15 @@
             <objects>
                 <viewController id="6zI-lm-RFa" customClass="GameScreenViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NMZ-I3-rDH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0h-PO-8wz">
-                                <rect key="frame" x="0.0" y="133" width="414" height="729"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCk-JR-AyS">
-                                <rect key="frame" x="16" y="60" width="382" height="73"/>
+                                <rect key="frame" x="16" y="16" width="382" height="73"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZLI-E8-j9L">
                                         <rect key="frame" x="16" y="16" width="350" height="41"/>
@@ -210,62 +210,67 @@
         <!--High Score Screen View Controller-->
         <scene sceneID="tTh-hp-YeT">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbt-lz-Q9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="7VX-Ps-s8E" customClass="HighScoreScreenViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tzt-J5-mc7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8Q-QG-Nv2">
-                                <rect key="frame" x="16" y="60" width="382" height="786"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWB-GR-53b">
+                                <rect key="frame" x="16" y="16" width="382" height="730"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScoreTitleLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zi-B4-ZGe">
+                                        <rect key="frame" x="16" y="16" width="350" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v1T-S2-wym">
+                                        <rect key="frame" x="16" y="53" width="350" height="661"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9Zi-B4-ZGe" firstAttribute="leading" secondItem="zWB-GR-53b" secondAttribute="leading" constant="16" id="9GR-LH-qn9"/>
+                                    <constraint firstAttribute="bottom" secondItem="v1T-S2-wym" secondAttribute="bottom" constant="16" id="Vfb-Is-6Ia"/>
+                                    <constraint firstItem="9Zi-B4-ZGe" firstAttribute="top" secondItem="zWB-GR-53b" secondAttribute="top" constant="16" id="YZt-Ph-npj"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Zi-B4-ZGe" secondAttribute="trailing" constant="16" id="dkJ-Aq-6S2"/>
+                                    <constraint firstAttribute="trailing" secondItem="v1T-S2-wym" secondAttribute="trailing" constant="16" id="emk-Qn-3GB"/>
+                                    <constraint firstItem="v1T-S2-wym" firstAttribute="top" secondItem="9Zi-B4-ZGe" secondAttribute="bottom" constant="16" id="p2t-SI-sfv"/>
+                                    <constraint firstItem="v1T-S2-wym" firstAttribute="leading" secondItem="zWB-GR-53b" secondAttribute="leading" constant="16" id="qeZ-L4-RN9"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4f-mJ-rt7">
+                                <rect key="frame" x="16" y="762" width="382" height="30"/>
+                                <state key="normal" title="PlayAgainButton"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="cae-2m-HRL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vPK-B6-zyt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="q8Q-QG-Nv2" firstAttribute="leading" secondItem="vPK-B6-zyt" secondAttribute="leading" constant="16" id="Vac-DK-msd"/>
-                            <constraint firstItem="q8Q-QG-Nv2" firstAttribute="top" secondItem="vPK-B6-zyt" secondAttribute="top" constant="16" id="nfK-Yi-H0M"/>
-                            <constraint firstItem="vPK-B6-zyt" firstAttribute="trailing" secondItem="q8Q-QG-Nv2" secondAttribute="trailing" constant="16" id="noA-uv-cTd"/>
-                            <constraint firstItem="vPK-B6-zyt" firstAttribute="bottom" secondItem="q8Q-QG-Nv2" secondAttribute="bottom" constant="16" id="wL6-kQ-0Q8"/>
+                            <constraint firstItem="zWB-GR-53b" firstAttribute="leading" secondItem="vPK-B6-zyt" secondAttribute="leading" constant="16" id="93V-w2-iOO"/>
+                            <constraint firstItem="vPK-B6-zyt" firstAttribute="bottom" secondItem="s4f-mJ-rt7" secondAttribute="bottom" constant="16" id="I6e-6I-dgI"/>
+                            <constraint firstItem="vPK-B6-zyt" firstAttribute="trailing" secondItem="zWB-GR-53b" secondAttribute="trailing" constant="16" id="IKO-G2-U52"/>
+                            <constraint firstItem="s4f-mJ-rt7" firstAttribute="top" secondItem="zWB-GR-53b" secondAttribute="bottom" constant="16" id="SNq-g5-GqW"/>
+                            <constraint firstItem="zWB-GR-53b" firstAttribute="top" secondItem="vPK-B6-zyt" secondAttribute="top" constant="16" id="qZd-Hp-IeC"/>
+                            <constraint firstItem="vPK-B6-zyt" firstAttribute="trailing" secondItem="s4f-mJ-rt7" secondAttribute="trailing" constant="16" id="tW7-UR-RbS"/>
+                            <constraint firstItem="s4f-mJ-rt7" firstAttribute="leading" secondItem="vPK-B6-zyt" secondAttribute="leading" constant="16" id="xSk-l1-bsU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pg7-jz-0pG"/>
                     <connections>
-                        <outlet property="MainCard" destination="q8Q-QG-Nv2" id="T6s-P8-HBU"/>
+                        <outlet property="HighScoreTableView" destination="v1T-S2-wym" id="cAD-nh-4Qs"/>
+                        <outlet property="HighScoreTitleLabel" destination="9Zi-B4-ZGe" id="els-fJ-RH9"/>
+                        <outlet property="MainCard" destination="zWB-GR-53b" id="QGv-zo-67l"/>
+                        <outlet property="PlayAgainButton" destination="s4f-mJ-rt7" id="FS0-rU-NcT"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mbt-lz-Q9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="76"/>
-        </scene>
-        <!--Root View Controller-->
-        <scene sceneID="Osv-pH-mSO">
-            <objects>
-                <tableViewController id="aah-3V-B5V" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fZY-se-gaF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Exl-IY-YVZ">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Exl-IY-YVZ" id="n9a-Uv-bM8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="aah-3V-B5V" id="oIF-iP-bVK"/>
-                            <outlet property="delegate" destination="aah-3V-B5V" id="Y5u-cy-OmE"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="NQF-Uz-5vS"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q2g-Nl-Yi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-222" y="-834"/>
+            <point key="canvasLocation" x="1134.7826086956522" y="75.669642857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LRA-oz-nco">
@@ -286,6 +291,9 @@
             <point key="canvasLocation" x="-1064" y="76"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cae-2m-HRL"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
