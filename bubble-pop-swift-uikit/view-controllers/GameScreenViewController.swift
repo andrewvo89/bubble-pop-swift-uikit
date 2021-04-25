@@ -15,6 +15,8 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var TimeCounterLabel: UILabel!
     @IBOutlet weak var ScoreTitleLabel: UILabel!
     @IBOutlet weak var ScoreCounterLabel: UILabel!
+    @IBOutlet weak var HighScoreTitleLabel: UILabel!
+    @IBOutlet weak var HighScoreLabel: UILabel!
     
     let DEFAULT_SIZE: Int = 50
     var timer = Timer()
@@ -78,8 +80,15 @@ class GameScreenViewController: UIViewController {
         TimeCounterLabel.textAlignment = .center
         TimeCounterLabel.text = String(timeRemaining)
         
+        //High Score labels
+        let allScores = Score.getAll()
+        HighScoreTitleLabel.text = "High Score"
+        HighScoreTitleLabel.textAlignment = .center
+        HighScoreLabel.textAlignment = .center
+        HighScoreLabel.text = String(allScores[0].score)
+        
         //Score labels
-        ScoreTitleLabel.text = "Score"
+        ScoreTitleLabel.text = "Your Score"
         ScoreTitleLabel.textAlignment = .center
         ScoreCounterLabel.textAlignment = .center
         score = 0
@@ -125,6 +134,7 @@ class GameScreenViewController: UIViewController {
             //Success condition, exit loop and add bubble to the game
             activeBubbles.append(newBubble)
             newBubble.addTarget(self, action: #selector(onBubblePressed), for: .touchUpInside)
+            newBubble.spring()
             PlayAreaView.addSubview(newBubble)
         }
     }
@@ -136,7 +146,9 @@ class GameScreenViewController: UIViewController {
             let removeBubble = Bool.random()
             if (removeBubble) {
                 //Remove from parent view
-                activeBubble.removeFromSuperview()
+//                activeBubble.spring()
+//                activeBubble.removeFromSuperview()
+                activeBubble.remove()
             } else {
                 //Add to new list of bubbles
                 newActiveBubbles.append(activeBubble)
@@ -158,7 +170,8 @@ class GameScreenViewController: UIViewController {
     
     @IBAction func onBubblePressed(_ sender: Bubble) {
         addPointsToScore(color: sender.color, points: sender.points)
-        sender.removeFromSuperview()
+        sender.remove()
+//        sender.removeFromSuperview()
             let newActiveBubbles: [Bubble] = activeBubbles.filter { (activeBubble) -> Bool in
                 activeBubble != sender
             }

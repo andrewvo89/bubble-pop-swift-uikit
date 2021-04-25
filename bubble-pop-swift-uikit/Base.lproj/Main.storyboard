@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-0y-gfD">
@@ -120,30 +120,47 @@
             <objects>
                 <viewController id="6zI-lm-RFa" customClass="GameScreenViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NMZ-I3-rDH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0h-PO-8wz">
-                                <rect key="frame" x="0.0" y="89" width="414" height="719"/>
+                                <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCk-JR-AyS">
-                                <rect key="frame" x="16" y="16" width="382" height="73"/>
+                                <rect key="frame" x="16" y="60" width="382" height="73"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZLI-E8-j9L">
                                         <rect key="frame" x="16" y="16" width="350" height="41"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-9J-eAO">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="116.5" height="41"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdi-PI-M9X">
-                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeCounterLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-fj-Mdw">
-                                                        <rect key="frame" x="0.0" y="20.5" width="175" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="116.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NpB-Um-12F">
+                                                <rect key="frame" x="116.5" y="0.0" width="117" height="41"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScoreTitleLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yop-s8-1hI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScoreLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ju3-On-IE2">
+                                                        <rect key="frame" x="0.0" y="20.5" width="117" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -151,16 +168,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C7V-Qx-u6i">
-                                                <rect key="frame" x="175" y="0.0" width="175" height="41"/>
+                                                <rect key="frame" x="233.5" y="0.0" width="116.5" height="41"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScoreTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8la-pl-l5n">
-                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScoreCounterLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-Ll-2oy">
-                                                        <rect key="frame" x="0.0" y="20.5" width="175" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="116.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -194,6 +211,8 @@
                     <navigationItem key="navigationItem" id="6wm-yq-P4R"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="HighScoreLabel" destination="Ju3-On-IE2" id="u2f-wv-nFn"/>
+                        <outlet property="HighScoreTitleLabel" destination="Yop-s8-1hI" id="mVC-0z-gwe"/>
                         <outlet property="PlayAreaView" destination="k0h-PO-8wz" id="id5-Yp-JGw"/>
                         <outlet property="ScoreCounterLabel" destination="Egm-Ll-2oy" id="oDu-Sg-xvg"/>
                         <outlet property="ScoreTitleLabel" destination="8la-pl-l5n" id="pBo-QI-Hfq"/>
@@ -213,7 +232,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbt-lz-Q9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="7VX-Ps-s8E" customClass="HighScoreScreenViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tzt-J5-mc7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWB-GR-53b">
@@ -292,6 +311,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="eEw-n5-Ys2"/>
         <segue reference="cae-2m-HRL"/>
     </inferredMetricsTieBreakers>
     <resources>

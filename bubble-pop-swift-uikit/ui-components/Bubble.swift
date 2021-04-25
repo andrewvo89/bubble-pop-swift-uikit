@@ -29,6 +29,27 @@ class Bubble: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func spring() {
+        let springAnimation = CASpringAnimation(keyPath: "transform.scale")
+        springAnimation.duration = 0.6
+        springAnimation.fromValue = 1
+        springAnimation.toValue = 0.8
+        springAnimation.repeatCount = 1
+        springAnimation.initialVelocity = 0.5
+        springAnimation.damping = 1
+        layer.add(springAnimation, forKey: nil)
+    }
+    
+    func remove() {
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1, options: UIView.AnimationOptions.curveEaseInOut) {
+            self.frame = CGRect(x: 0, y: 0, width: 200.0, height: 50.0)
+            self.center = self.center
+        } completion: { (Bool) in
+            self.removeFromSuperview()
+        }
+
+    }
+    
     func changePosition(x: Int, y: Int) -> Void {
         self.frame.origin.x = CGFloat(x)
         self.frame.origin.y = CGFloat(y)
