@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     var name:String = "" {
         didSet {
@@ -54,6 +54,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialize()
+        //Add NameTextField delegate protocol
+        self.NameTextField.delegate = self
+        //Register a tapper to handle dismissing keyboard when tapping outside of TextField
+        let tapper = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
+        tapper.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapper)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Function to close keyboard after pressing return
+        dismissKeyboard()
+        return false
+    }
+    
+    @objc func dismissKeyboard() -> Void {
+        self.view.endEditing(true)
     }
     
     func initialize() -> Void {
@@ -68,7 +84,7 @@ class ViewController: UIViewController {
         
         //Game Duration
         gameDuration = 60
-        GameDurationSlider.minimumValue = 5
+        GameDurationSlider.minimumValue = 10
         GameDurationSlider.maximumValue = 120
         GameDurationSlider.value = Float(gameDuration)
         
@@ -97,17 +113,15 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "toGameScreenSegue") {
-            let viewController = segue.destination as! GameScreenViewController
-            viewController.name = name
+        if (segue.identifier == "ToCountdownScreenSegue") {
+            let viewController = segue.destination as! CountdownScreenViewController
+            viewController.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
             viewController.gameDuration = gameDuration
             viewController.maxBubbles = maxBubbles
-            
         }
     }
-
-
-
 }
 

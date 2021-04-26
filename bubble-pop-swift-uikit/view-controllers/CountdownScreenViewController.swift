@@ -8,6 +8,10 @@
 import UIKit
 
 class CountdownScreenViewController: UIViewController {
+    var name:String = ""
+    var gameDuration:Int = 60
+    var maxBubbles:Int = 15
+    
     @IBOutlet weak var TimerLabel: UILabel!
     var timer = Timer()
     var timeRemaining:Int = 3 {
@@ -41,5 +45,15 @@ class CountdownScreenViewController: UIViewController {
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: UIView.AnimationOptions.curveEaseInOut, animations: {
             self.TimerLabel.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         }, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ToGameScreenSegue") {
+            let viewController = segue.destination as! GameScreenViewController
+            viewController.name = name
+            viewController.gameDuration = gameDuration
+            viewController.maxBubbles = maxBubbles
+            
+        }
     }
 }
