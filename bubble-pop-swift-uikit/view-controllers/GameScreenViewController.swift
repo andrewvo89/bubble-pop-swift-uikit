@@ -82,11 +82,15 @@ class GameScreenViewController: UIViewController {
         TimeCounterLabel.text = String(timeRemaining)
         
         //High Score labels
-        let allScores = Score.getAll()
+        let allScores: [Score] = Score.getAll()
+        var highScore = 0
+        if (allScores.count > 0) {
+            highScore = allScores[0].score
+        }
         HighScoreTitleLabel.text = "High Score"
         HighScoreTitleLabel.textAlignment = .center
         HighScoreLabel.textAlignment = .center
-        HighScoreLabel.text = String(allScores[0].score)
+        HighScoreLabel.text = String(highScore)
         
         //Score labels
         ScoreTitleLabel.text = "Your Score"
@@ -94,9 +98,12 @@ class GameScreenViewController: UIViewController {
         ScoreCounterLabel.textAlignment = .center
         score = 0
         
-        //Initialize all positions depending on screen width and height
+        //Initialize the bounds of the game area so bubbles can be generated in the right spots
         availableWidth = Int(PlayAreaView.frame.width) - DEFAULT_SIZE
         availableHeight = Int(PlayAreaView.frame.height) - DEFAULT_SIZE
+        
+        //Create first set of bubbles
+        self.createBubbles()
     }
     
     func createBubbles() {

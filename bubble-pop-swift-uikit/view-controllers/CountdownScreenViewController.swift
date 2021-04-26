@@ -30,7 +30,7 @@ class CountdownScreenViewController: UIViewController {
     
     
     func initializeUI() -> Void {
-        TimerLabel.font = UIFont.systemFont(ofSize: 256)
+        TimerLabel.font = UIFont.systemFont(ofSize: 1024)
         setTimerLabel()
     }
     
@@ -39,7 +39,7 @@ class CountdownScreenViewController: UIViewController {
         TimerLabel.text = String(timeRemaining)
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-            self.TimerLabel.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+            self.TimerLabel.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         }, completion: nil)
     }
 }

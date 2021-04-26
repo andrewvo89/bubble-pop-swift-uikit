@@ -17,7 +17,6 @@
 		491D8752262E5C6000C92670 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D8751262E5C6000C92670 /* Bubble.swift */; };
 		491D877C2630D9A600C92670 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D877B2630D9A600C92670 /* Score.swift */; };
 		491D878026320F3800C92670 /* HighScoreScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */; };
-		491D878426322F2900C92670 /* HighScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D878326322F2900C92670 /* HighScores.swift */; };
 		491D87902633A68800C92670 /* HighScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D878E2633A68800C92670 /* HighScoreTableViewCell.swift */; };
 		491D87912633A68800C92670 /* HighScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491D878F2633A68800C92670 /* HighScoreTableViewCell.xib */; };
 		491D87942635398900C92670 /* CountdownScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D87932635398900C92670 /* CountdownScreenViewController.swift */; };
@@ -37,7 +36,6 @@
 		491D8751262E5C6000C92670 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		491D877B2630D9A600C92670 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		491D877F26320F3800C92670 /* HighScoreScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreScreenViewController.swift; sourceTree = "<group>"; };
-		491D878326322F2900C92670 /* HighScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScores.swift; sourceTree = "<group>"; };
 		491D878E2633A68800C92670 /* HighScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreTableViewCell.swift; sourceTree = "<group>"; };
 		491D878F2633A68800C92670 /* HighScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighScoreTableViewCell.xib; sourceTree = "<group>"; };
 		491D87932635398900C92670 /* CountdownScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownScreenViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				491D877B2630D9A600C92670 /* Score.swift */,
-				491D878326322F2900C92670 /* HighScores.swift */,
 			);
 			path = stucts;
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 			files = (
 				491D874A262C16AC00C92670 /* GameScreenViewController.swift in Sources */,
 				491D877C2630D9A600C92670 /* Score.swift in Sources */,
-				491D878426322F2900C92670 /* HighScores.swift in Sources */,
 				491D8752262E5C6000C92670 /* Bubble.swift in Sources */,
 				491D87942635398900C92670 /* CountdownScreenViewController.swift in Sources */,
 				491D878026320F3800C92670 /* HighScoreScreenViewController.swift in Sources */,

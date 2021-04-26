@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     var name:String = "" {
         didSet {
-//            StartGameButton.isEnabled = name.count > 0
+            StartGameButton.isEnabled = name.count > 0
         }
     }
 
@@ -57,12 +57,6 @@ class ViewController: UIViewController {
     }
     
     func initialize() -> Void {
-        let highScores = Score.getAll()
-        for highScore in highScores {
-            print("\(highScore.name): \(highScore.score)")
-        }
-            
-        
         //Game Label
         GameTitleLabel.font = UIFont.systemFont(ofSize: 24)
         GameTitleLabel.text = "Bubble Pop!"
