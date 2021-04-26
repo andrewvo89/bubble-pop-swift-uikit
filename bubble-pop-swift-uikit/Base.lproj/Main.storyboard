@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-0y-gfD">
-                                <rect key="frame" x="16" y="249" width="382" height="310"/>
+                                <rect key="frame" x="16" y="298" width="382" height="310"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameTitleLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-85-Zfn">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -84,7 +84,7 @@
                                         <rect key="frame" x="0.0" y="280" width="382" height="30"/>
                                         <state key="normal" title="StartGameButton"/>
                                         <connections>
-                                            <segue destination="6zI-lm-RFa" kind="show" identifier="toGameScreenSegue" id="5xZ-Id-JN5"/>
+                                            <segue destination="cDQ-fN-96w" kind="show" identifier="ToCountdownScreenSegue" id="Jlo-oK-MDJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-259.4202898550725" y="75.669642857142847"/>
+            <point key="canvasLocation" x="-1065" y="76"/>
         </scene>
         <!--Game Screen View Controller-->
         <scene sceneID="hCJ-ym-rTG">
@@ -219,7 +219,7 @@
                         <outlet property="TimeCounterLabel" destination="lLq-fj-Mdw" id="qHT-UM-YoA"/>
                         <outlet property="TimeTitleLabel" destination="Cdi-PI-M9X" id="D2V-tr-9rI"/>
                         <outlet property="TopPanelCard" destination="bCk-JR-AyS" id="naT-OQ-Can"/>
-                        <segue destination="7VX-Ps-s8E" kind="show" identifier="toHighScoreScreenSegue" id="eEw-n5-Ys2"/>
+                        <segue destination="7VX-Ps-s8E" kind="show" identifier="ToHighScoreScreenSegue" id="eEw-n5-Ys2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vug-Vu-xHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -236,7 +236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWB-GR-53b">
-                                <rect key="frame" x="16" y="16" width="382" height="730"/>
+                                <rect key="frame" x="16" y="60" width="382" height="740"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighScoreTitleLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zi-B4-ZGe">
                                         <rect key="frame" x="16" y="16" width="350" height="21"/>
@@ -245,7 +245,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v1T-S2-wym">
-                                        <rect key="frame" x="16" y="53" width="350" height="661"/>
+                                        <rect key="frame" x="16" y="53" width="350" height="671"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -261,7 +261,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4f-mJ-rt7">
-                                <rect key="frame" x="16" y="762" width="382" height="30"/>
+                                <rect key="frame" x="16" y="816" width="382" height="30"/>
                                 <state key="normal" title="PlayAgainButton"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="cae-2m-HRL"/>
@@ -291,6 +291,38 @@
             </objects>
             <point key="canvasLocation" x="1134.7826086956522" y="75.669642857142847"/>
         </scene>
+        <!--Countdown Screen View Controller-->
+        <scene sceneID="rYK-a6-Mmp">
+            <objects>
+                <viewController id="cDQ-fN-96w" customClass="CountdownScreenViewController" customModule="bubble_pop_swift_uikit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4CO-Ed-r9Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TimerLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1M-wS-lzI">
+                                <rect key="frame" x="165" y="438" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2KG-Vc-d5H"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q1M-wS-lzI" firstAttribute="centerX" secondItem="2KG-Vc-d5H" secondAttribute="centerX" id="FWh-fV-qcV"/>
+                            <constraint firstItem="Q1M-wS-lzI" firstAttribute="centerY" secondItem="2KG-Vc-d5H" secondAttribute="centerY" id="WVO-pY-HX7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="L3p-3L-uAL"/>
+                    <connections>
+                        <outlet property="TimerLabel" destination="Q1M-wS-lzI" id="9ow-wQ-oVg"/>
+                        <segue destination="6zI-lm-RFa" kind="show" identifier="ToGameScreenSegue" id="YV8-48-0sl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVS-Zz-lGb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-319" y="76"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LRA-oz-nco">
             <objects>
@@ -307,7 +339,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4I-hJ-itC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1064" y="76"/>
+            <point key="canvasLocation" x="-1743" y="76"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

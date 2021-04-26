@@ -61,7 +61,7 @@ class HighScoreScreenViewController: UIViewController {
 
 extension HighScoreScreenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("The row was tapped")
+//        print("The row was tapped")
     }
 }
 
