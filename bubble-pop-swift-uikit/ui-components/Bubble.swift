@@ -12,8 +12,7 @@ class Bubble: UIButton {
     var color: UIColor = UIColor.red
     
     init(x: Int, y: Int, bubbleSize: Int) {
-        super.init(frame: .zero)
-        self.frame = CGRect(x: x, y: y, width: bubbleSize, height: bubbleSize)
+        super.init(frame: CGRect(x: x, y: y, width: bubbleSize, height: bubbleSize))
         
         //Get random generated bubble properties
         let buttonProperties: (color: UIColor, points: Int) = getBubbleProperties()
@@ -23,9 +22,9 @@ class Bubble: UIButton {
         //Styling of the bubble
         self.backgroundColor = buttonProperties.color
         self.layer.cornerRadius = self.bounds.size.width / 2
-        
         self.transform = CGAffineTransform(scaleX: 0, y: 0)
         
+        //Animate the entering of a bubble scale from 0 to 1
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform(scaleX: 1, y: 1
             )
@@ -36,23 +35,12 @@ class Bubble: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-//    func spring() {
-//        let springAnimation = CASpringAnimation(keyPath: "transform.scale")
-//        springAnimation.duration = 0.6
-//        springAnimation.fromValue = 1
-//        springAnimation.toValue = 0.8
-//        springAnimation.repeatCount = 1
-//        springAnimation.initialVelocity = 0.5
-//        springAnimation.damping = 1
-//        layer.add(springAnimation, forKey: nil)
-//    }
-    
     func remove(duration: Double, location: (x: CGFloat, y: CGFloat)) {
         let currentWidth = self.frame.width
         let currentHeight = self.frame.height
         
         self.alpha = 0.1
+        //Animate the movement of the bubble to go off screen
         UIView.animate(withDuration: duration) {
             self.frame = CGRect(x: location.x, y: location.y, width: currentWidth, height: currentHeight)
         } completion: { (success) in
@@ -62,6 +50,7 @@ class Bubble: UIButton {
         }
     }
     
+    //Animate the popping of a bubble and remove from superview after animation is complete
     func pop(onComplete: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 2, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1
@@ -75,15 +64,18 @@ class Bubble: UIButton {
         })
     }
     
+    //Change position if there is an overlap
     func changePosition(x: Int, y: Int) -> Void {
         self.frame.origin.x = CGFloat(x)
         self.frame.origin.y = CGFloat(y)
     }
     
+    //Determine if self is overlapping with another bubble
     func isOverlapping(bubble: Bubble) -> Bool {
         return self.frame.intersects(bubble.frame)
     }
     
+    //Return color and points associated with this bubble
     func getBubbleProperties() -> (UIColor, Int) {
         let randomPercentage = Int.random(in: 1...100)
         switch randomPercentage {

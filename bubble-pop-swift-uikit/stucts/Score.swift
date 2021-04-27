@@ -9,7 +9,6 @@ import UIKit
 class Score {
     var name: String
     var score: Int
-    let userDefaults = UserDefaults.standard
     
     init(name: String, score: Int) {
         self.name = name
@@ -20,7 +19,7 @@ class Score {
     static func getAll() -> [Score] {
         let userDefaults = UserDefaults.standard
         let scoresDictionary = userDefaults.object(forKey: "highScores") as? Dictionary<String, Int> ?? Dictionary<String, Int>()
-        print(scoresDictionary)
+    
         var scores: [Score] = []
         for (key, value) in scoresDictionary {
             scores.append(Score(name: key, score: value))
@@ -32,9 +31,11 @@ class Score {
     }
     
     func register() -> Void {
+        let userDefaults = UserDefaults.standard
         var scoresDictionary = userDefaults.object(forKey: "highScores") as? Dictionary<String, Int> ?? Dictionary<String, Int>()
         let currentHighScore: Int = scoresDictionary[name] ?? 0
-        
+        userDefaults.removeObject(forKey: "")
+        userDefaults.setValue(nil, forKey: "")
         if (score > currentHighScore) {
             scoresDictionary[name] = score
             userDefaults.setValue(scoresDictionary, forKey: "highScores")

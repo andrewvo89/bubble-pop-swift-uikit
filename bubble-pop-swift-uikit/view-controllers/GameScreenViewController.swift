@@ -19,13 +19,14 @@ class GameScreenViewController: UIViewController {
     @IBOutlet weak var HighScoreLabel: UILabel!
     
     let DEFAULT_SIZE: Int = 50
-    let DEFAULT_MOVEMENT_DURATION = 5
+    let DEFAULT_MOVEMENT_DURATION: Int = 5
     var timer = Timer()
-    var name:String = ""
+    var name: String = ""
     var activeBubbles: [Bubble] = []
     var availableWidth: Int = 0
     var availableHeight: Int = 0
     var prevColor: UIColor?
+    var subviewsLoaded: Bool = false
     
     var timeRemaining:Int = 60 {
         didSet {
@@ -47,6 +48,7 @@ class GameScreenViewController: UIViewController {
     var score:Int = 0 {
         didSet {
             if (ScoreCounterLabel != nil) {
+                //Update score label everytime this variable changes
                 ScoreCounterLabel.text = String(score)
             }
         }
@@ -55,14 +57,24 @@ class GameScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
-            timer in
-            self.timeRemaining -= 1
-            self.removeBubbles()
-            self.createBubbles()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        //Get available width and height to prevent bubbles being generated outside play area
+        availableWidth = Int(PlayAreaView.bounds.width) - DEFAULT_SIZE
+        availableHeight = Int(PlayAreaView.bounds.height) - DEFAULT_SIZE
+        //Only perform the below once (after subviews have been loaded)
+        if (!subviewsLoaded) {
+            //Create first set of bubbles as soon as subviews are loaded
+            createBubbles()
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
+                timer in
+                self.timeRemaining -= 1
+                self.removeBubbles()
+                self.createBubbles()
+            }
+            subviewsLoaded = true
         }
-        // Do any additional setup after loading the view.
     }
     
     func initializeUI() -> Void {
@@ -71,7 +83,7 @@ class GameScreenViewController: UIViewController {
         TopPanelCard.layer.borderColor = UIColor.black.cgColor
         TopPanelCard.layer.cornerRadius = 8
         TopPanelCard.layer.shadowColor = UIColor.black.cgColor
-        TopPanelCard.layer.shadowOpacity = 0.6
+        TopPanelCard.layer.shadowOpacity = 0.3
         TopPanelCard.layer.shadowOffset = .init(width: 3, height: 3)
         TopPanelCard.layer.shadowRadius = 3
         
@@ -97,13 +109,6 @@ class GameScreenViewController: UIViewController {
         ScoreTitleLabel.textAlignment = .center
         ScoreCounterLabel.textAlignment = .center
         score = 0
-        
-        //Initialize the bounds of the game area so bubbles can be generated in the right spots
-        availableWidth = Int(PlayAreaView.frame.width) - DEFAULT_SIZE
-        availableHeight = Int(PlayAreaView.frame.height) - DEFAULT_SIZE
-        
-        //Create first set of bubbles
-        self.createBubbles()
     }
     
     func createBubbles() {
@@ -119,6 +124,7 @@ class GameScreenViewController: UIViewController {
             //Default initial vales before entering repeat while loop
             var isOverlapping: Bool
             let newBubble = Bubble(x: 0, y: 0, bubbleSize: DEFAULT_SIZE)
+            newBubble.addTarget(self, action: #selector(onBubblePressed), for: .touchDown)
             repeat {
                 //Generate random co-ordinates
                 let newX = Int.random(in: 0...availableWidth)
@@ -132,7 +138,6 @@ class GameScreenViewController: UIViewController {
             } while (isOverlapping == true)
             //Success condition, exit loop and add bubble to the game
             activeBubbles.append(newBubble)
-            newBubble.addTarget(self, action: #selector(onBubblePressed), for: .touchUpInside)
             PlayAreaView.addSubview(newBubble)
         }
     }
@@ -160,6 +165,7 @@ class GameScreenViewController: UIViewController {
     func addPointsToScore(color: UIColor, points: Int) -> Int {
         var pointsAdded: Int = points
         if (prevColor != nil && prevColor === color) {
+            //Multiply score by 1.5 if previous color is the same as current color
             pointsAdded = Int(ceil(Double(points) * 1.5))
         }
         score += pointsAdded
@@ -170,9 +176,9 @@ class GameScreenViewController: UIViewController {
     @IBAction func onBubblePressed(_ sender: Bubble) {
         let pointsAdded: Int = addPointsToScore(color: sender.color, points: sender.points)
         let pointsLabel = Points(frame: sender.frame, points: pointsAdded)
+        //Show amount of points where the bubble was popped
         PlayAreaView.addSubview(pointsLabel)
         sender.pop {
-//        sender.removeFromSuperview()
             let newActiveBubbles: [Bubble] = self.activeBubbles.filter { (activeBubble) -> Bool in
                 activeBubble != sender
             }
@@ -186,10 +192,12 @@ class GameScreenViewController: UIViewController {
         let finalScore = Score(name: name, score: score)
         finalScore.register()
         //Programatically navigate to high score screen
-        performSegue(withIdentifier: "ToHighScoreScreenSegue", sender: nil)
+        self.performSegue(withIdentifier: "ToHighScoreScreenSegue", sender: nil)
+        
     }
     
     func getShortestOffScreenLocation(x: CGFloat, y: CGFloat) -> (x: CGFloat, y: CGFloat) {
+        //Set up 7 different locations around the edges of the screen
         let locations: [(x: CGFloat, y: CGFloat)] = [
             (-CGFloat(DEFAULT_SIZE), -CGFloat(DEFAULT_SIZE)),
             (CGFloat(availableWidth) / CGFloat(2.0), -CGFloat(DEFAULT_SIZE)),
@@ -200,7 +208,8 @@ class GameScreenViewController: UIViewController {
             (CGFloat(availableWidth) / CGFloat(2.0), CGFloat(availableHeight) + CGFloat(DEFAULT_SIZE)),
             (CGFloat(availableWidth) + CGFloat(DEFAULT_SIZE), CGFloat(availableHeight) + CGFloat(DEFAULT_SIZE)),
         ]
-        let shortestOffScreenLocation: (x: CGFloat, y: CGFloat) = locations.reduce((x: CGFloat(0), y: CGFloat(0))) { (currentShortestDistance, location) -> (x: CGFloat, y: CGFloat) in
+        //Get shortest distance from the bubble to one of the 7 locations
+        let shortestOffScreenLocation: (x: CGFloat, y: CGFloat) = locations.reduce(locations[0]) { (currentShortestDistance, location) -> (x: CGFloat, y: CGFloat) in
             let currentXDistance = abs(x - currentShortestDistance.x)
             let currentYDistance = abs(y - currentShortestDistance.y)
             let newXDistance = abs(x - location.x)
@@ -215,9 +224,11 @@ class GameScreenViewController: UIViewController {
         return shortestOffScreenLocation
     }
     
+    //Send score to the Segue for the next screen to display
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ToHighScoreScreenSegue") {
-            
+            let viewController = segue.destination as! HighScoreScreenViewController
+            viewController.score = score
         }
     }
 }

@@ -49,7 +49,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         maxBubbles = Int(MaxBubblesSlider.value)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -107,13 +106,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         SettingsCard.layer.borderColor = UIColor.black.cgColor
         SettingsCard.layer.cornerRadius = 8
         SettingsCard.layer.shadowColor = UIColor.black.cgColor
-        SettingsCard.layer.shadowOpacity = 0.6
+        SettingsCard.layer.shadowOpacity = 0.3
         SettingsCard.layer.shadowOffset = .init(width: 3, height: 3)
         SettingsCard.layer.shadowRadius = 3
-        
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ToCountdownScreenSegue") {
